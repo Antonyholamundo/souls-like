@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Crimson Text', serif;
+            background:
+                linear-gradient(180deg, rgba(5,8,15,0.85) 0%, rgba(5,8,15,0.65) 50%, rgba(5,8,15,0.85) 100%),
+                url('img/gothic_architecture.jpg') center/cover no-repeat;
+            color: #f4f4f4;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* ocultar las partículas si aún están en el HTML */
+        .particles {
+               position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* niebla suave por encima del fondo para ambiente */
+        .fog {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background: url('img/fog_texture.png') repeat; /* opcional: añade img/fog_texture.png */
+            opacity: 0.12;
+            animation: fogMove 60s linear infinite;
+        }
+        @keyframes fogMove {
+            from { background-position: 0 0; }
+            to { background-position: 1000px 0; }
+        }
+        
+        /* asegurar que se vea el contenido sobre el fondo */
+        .hero, .section, footer {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Partículas de fondo animadas */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #3a6ea5;
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+            opacity: 0.7;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+        
+        /* Header épico */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 70%),
+                linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="flames" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M50,80 Q30,40 50,20 Q70,40 50,80" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="1000" height="1000" fill="url(%23flames)"/></svg>');
+            opacity: 0.1;
+            animation: flicker 4s infinite ease-in-out;
+        }
+        
+        @keyframes flicker {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+        }
+        
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            animation: glow 2s infinite alternate;
+            color: #fff; /* Color blanco */
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgb(255, 255, 255); }
+            to { text-shadow: 0 0 30px rgba(255, 254, 247, 0.8), 0 0 40px rgba(255, 255, 255, 0.3); }
+        }
+        s
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        /* Secciones */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #fff; /* Cambiado de #3a6ea5 o amarillo a blanco */
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+        
+        /* Grid de fotos/recuerdos */
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .memory-card {
+            background: linear-gradient(135deg, rgba(58, 110, 165, 0.1), rgba(58, 110, 165, 0.05));
+            border: 1px solid rgba(58, 110, 165, 0.3);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .memory-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+        
+        .memory-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(58, 110, 165, 0.2);
+            border-color: rgba(58, 110, 165, 0.6);
+        }
+        
+        .memory-card:hover::before {
+            opacity: 1;
+            animation: shine 0.8s ease;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .photo-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 2px solid rgba(58, 110, 165, 0.3);
+        }
+        
+        .memory-card h3 {
+            font-family: 'Cinzel', serif;
+            color: #3a6ea5;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .memory-card p {
+            font-style: italic;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* Sección de frases épicas */
+        .quotes-section {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(255,255,255,0.1));
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            position: relative;
+        }
+        
+        .quote {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            border-left: 4px solid #3a6ea5;
+            background: rgba(58, 110, 165, 0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .quote blockquote {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        
+        .quote cite {
+            font-family: 'Cinzel', serif;
+            color: #3a6ea5;
+            font-size: 1rem;
+            display: block;
+        }
+
+        p {
+  font-size: 1.5em; /* 1.5 veces el tamaño de fuente normal */
+}
+        
+        /* Botón de acción épico */
+        .cta-button {
+            display: block;
+            margin: 3rem auto;
+            padding: 1rem 3rem;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            background: linear-gradient(45deg, #3a6ea5, #5b8fd6);
+            color: #fff; /* Cambiado de #1a1a2e a blanco */
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(58, 110, 165, 0.4);
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(58, 110, 165, 0.3);
+            margin-top: 3rem;
+        }
+        
+        footer p {
+            font-style: italic;
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 3rem 1rem;
+            }
+            
+            .memories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quote blockquote {
+                font-size: 1.4rem;
+            }
+        }
